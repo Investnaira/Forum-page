@@ -1,0 +1,15 @@
+/* CSS Document */
+.first{
+	margin-top:75px;}
+.little-texts{
+	font-size:10px;
+	color:black;}
+.numbers{
+	margin:5px;
+	border: 1px solid black;
+	border-radius:5px;
+	font-size:20px;
+	font-weight:bold;
+	padding:1px;
+	color:white;
+	background-color:black;}
