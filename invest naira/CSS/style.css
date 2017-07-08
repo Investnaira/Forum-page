@@ -1,4 +1,9 @@
 /* CSS Document */
+.navbar{
+	background-color: green;
+}
+.nlink a:hover{
+	color:red;}
 .first{
 	margin-top:75px;}
 .little-texts{
@@ -6,10 +11,12 @@
 	color:black;}
 .numbers{
 	margin:5px;
-	border: 1px solid black;
+	border: 1px solid green;
 	border-radius:5px;
 	font-size:20px;
 	font-weight:bold;
 	padding:1px;
 	color:white;
-	background-color:black;}
+	background-color:green;}
+	.well{
+		background-color:#A5E8A5;}
