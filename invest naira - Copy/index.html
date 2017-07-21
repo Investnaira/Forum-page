@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/6.1.19/browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../invest naira/CSS/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+  <nav class="navbar navbar-fixed-top navbar-default">
+<div class="container-fluid"> 
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+<a class="navbar-brand" href="#"></a>
+</div>
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="nav navbar-nav">
+<li><a href="#" style="color:white">Home</a></li>
+<li class="active"><a href="#" style="color:white">Forum</a></li>
+<li><a href="#" style="color:white">Blogs</a></li>
+<li><a href="#" style="color:white">Dashboard</a></li>
+<li><a href="#" style="color:white">About Us</a></li>
+<li><a href="#" style="color:white">Contact Us</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container-fluid">
+
+  <div class="row">
+   <div class="col-md-3 pull-right" style="margin-top:75px">
+    <h4>Contributor Categories</h4>
+    <ul>
+    <li><span style="color:#E7D8D8" class="fa fa-square"></span> Very Little Contributions</li>
+    <li><span style="color:yellow" class="fa fa-square"></span> Fairly Little Contributions</li>
+    <li><span style="color:green" class="fa fa-square"></span> Frequent Contributions</li>
+    <li><span style="color:brown" class="fa fa-square"></span> Fairly Frequent Contributions</li>
+    <li><span style="color:black; margin-bottom:10%" class="fa fa-square"></span> Very Frequent Contribution</li>
+    </ul> 
+    
+    <h4> Hot Topics </h4>
+    <ul>
+    <li><a href="#"><span class="numbers">1</span> Lorem ipsum dolor sit amet</a></li>
+    <li><a href="#"><span class="numbers">2</span> Lorem ipsum dolor sit amet</a></li>
+    <li><a href="#"><span class="numbers">3</span> Lorem ipsum dolor sit amet</a></li>
+    <li><a href="#"><span class="numbers">4</span> Lorem ipsum dolor sit amet</a></li>
+    <li><a href="#"><span class="numbers">5</span> Lorem ipsum dolor sit amet</a></li>
+    </ul>
+    
+  </div>
+    <div class="col-md-8">
+    
+    
+    <div id="example"></div>
+    </div>
+    </div>
+    </div>
+    <script type="text/babel">
+	var Comments = React.createClass({
+	getInitialState: function(){
+		return{editing:false}
+		},
+	edit: function(){
+		this.setState({editing:true})
+		},
+	save: function(){
+	var val = this.refs.NewText.value;
+	alert(val);
+    this.props.updateC(val,this.props.index);
+	this.setState({editing:false})
+	},
+	delete: function(){
+		this.props.removeC(this.props.index);
+		},
+renderNormal: function(){
+	return(
+	<div>
+	  <div className="well row">
+	  	  <div className="col-md-1 pull-left"> <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" width="50px" className="img-circle" alt="Profile Pic" /> </div>
+          <div className="col-md-10">
+            <p>{this.props.children}</p>
+			<div className="row ">
+              <div className="col-md-4 little-texts">
+                <p><span className="text-info">Updated</span> 4th Sep, 2017 by John Doe<span className="fa fa-square"></span> </p>
+              </div>
+			   <div className="col-md-5 little-texts">
+                <p><span className="text-info">Last Reply</span> 7th Sep, 2017 by Jane Doe <span className="fa fa-square"></span></p>
+              </div>
+			   <div className="col-md-3 little-texts">
+                <p><a href="#" ><span className="glyphicon glyphicon-heart"></span>12</a> <a href="#"> <span className="glyphicon glyphicon-comment"></span> 7</a> </p>
+              </div>
+			  </div>
+			  
+			   <div className="row">
+            <div className="col-md-3 pull-right">
+            <p><span> Share :</span> <a href="#"><span className="fa fa-twitter"></span></a> <a href="#"><span className="fa fa-facebook"></span></a> <a href="#"><span className="fa fa-google-plus"></span></a></p>
+            </div>
+            
+            </div>
+			  
+			
+		<div className="pull-right col-md-8">
+			<button onClick={this.edit}className=" btn btn-info"><span className="glyphicon glyphicon-plus"></span> Edit</button><button className=" btn btn-danger" onClick={this.delete}><span className="glyphicon glyphicon-trash"></span> Delete</button>
+			</div>
+			</div>
+	</div>
+	</div>
+	
+	)
+		
+	},
+		
+	
+	renderForm: function(){
+	return(
+	<div>
+	  <div className="well">
+	  <div className="row">
+	  	  <div className="col-md-1 pull-left"> <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png" width="50px" className="img-circle" alt="Profile Pic" /> </div>
+          <div className="col-md-10">
+            <textarea ref="NewText"className="form-control" placeholder={this.props.children}></textarea></div>
+		<div className="pull-right col-md-3">
+			<button onClick={this.save} className=" btn btn-success"><span className="glyphicon glyphicon-plus"></span> Save</button>
+			</div>
+			</div>
+	</div>
+	</div>
+	
+	)
+	
+	
+	},
+
+	render: function(){
+		if (this.state.editing){
+	return this.renderForm();}
+	else{
+	return this.renderNormal();
+	}
+	}
+	})
+	var Board = React.createClass({
+		getInitialState: function(){
+			return{comments:['Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.']}	
+		},
+		removecomment : function(i){
+			var arr = this.state.comments;
+			arr.splice(i,1);
+			this.setState({comments:arr});
+			
+			
+			},
+		editcomment : function(newText,i){
+			var arr = this.state.comments;
+			arr[i]=newText;
+			this.setState({comments:arr});
+			
+			
+			},
+		addcomment : function(newText){
+		var arr = this.state.comments;
+		newText = this.refs.newT.value;
+		arr.push(newText);
+		this.setState({comments:arr});
+		},
+		eachcomment:function(item, i){
+            return(<Comments key={i} index={i} updateC={this.editcomment } removeC={this.removecomment}>{item}</Comments>)
+		},
+		
+		render : function(){
+		 return(
+		 <div>
+		 <div className="textar">
+		 <textarea ref="newT" className="form-control" placeholder= "Enter Topic"></textarea>
+		 <button className="btn btn-success" onClick={this.addcomment.bind(null,'shizz')}>Submit</button></div>
+		 <div className="space">{this.state.comments.map(this.eachcomment)
+			 }</div></div>);
+		}
+				});
+	
+	ReactDOM.render(<Board />,document.getElementById('example'));
+	</script
+  
+  ></body>
+</html>
+
